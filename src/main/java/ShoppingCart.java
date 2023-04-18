@@ -17,19 +17,27 @@ public class ShoppingCart {
         return this.items;
     }
 
-    public boolean payWithCreditCard(String cardholderName, String number, String cvc, Date expiringDate) {
-        return PaymentSystem.payWithCreditCard(this, cardholderName, number, cvc, expiringDate);
+    public String payWithCreditCard(String cardholderName, String number, String cvc, Date expiringDate) {
+        boolean result = PaymentSystem.payWithCreditCard(this, cardholderName, number, cvc, expiringDate);
+
+        return result ? "Credit card payment realized" : "Could not realize credit card payment";
     }
 
-    public boolean payWithPayPal(String email, String password) {
-        return PaymentSystem.payWithPayPal(this, email, password);
+    public String payWithPayPal(String email, String password) {
+        boolean result = PaymentSystem.payWithPayPal(this, email, password);
+
+        return result ? "Paypal payment realized" : "Could not realize Paypal payment";
     }
 
-    public boolean payWithPix(KeyType keyType, String key) {
-        return PaymentSystem.payWithPix(this, keyType, key);
+    public String payWithPix(KeyType keyType, String key) {
+        boolean result = PaymentSystem.payWithPix(this, keyType, key);
+
+        return result ? "Pix payment realized" : "Could not realize Pix payment";
     }
 
-    public boolean payWithBoleto(String code) {
-        return PaymentSystem.payWithBoleto(this, code);
+    public String payWithBoleto(String code) {
+        boolean result = PaymentSystem.payWithBoleto(this, code);
+
+        return result ? "Boleto payment realized" : "Could not realize Boleto payment";
     }
 }
